@@ -1,9 +1,9 @@
 
 
 This archive contains the distribution Lingua-CES-Num2Word,
-version 0.044:
+version 0.0577:
 
-  Lingua::CES::Num2Word is module for conversion numbers into their representation in Czech. It converts whole numbers from 0 up to 999 999 999.
+  Number 2 word conversion in CES.
 
 source: http://opensource.org
 

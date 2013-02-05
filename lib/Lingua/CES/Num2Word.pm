@@ -1,7 +1,7 @@
 # For Emacs: -*- mode:cperl; mode:folding; coding:utf-8; -*-
 
 package Lingua::CES::Num2Word;
-# ABSTRACT: Lingua::CES::Num2Word is module for conversion numbers into their representation in Czech. It converts whole numbers from 0 up to 999 999 999.
+# ABSTRACT: Number 2 word conversion in CES.
 
 # {{{ use block
 
@@ -14,9 +14,8 @@ use Perl6::Export::Attrs;
 # }}}
 # {{{ BEGIN
 
-my($ver)       = ('$Rev: 440 $' =~ m{(\d+)}xms);
-our $VERSION  = $ver / 10_000;
-our $REVISION = '$Rev: 440 $';
+our $VERSION  = 0.0577;
+our $REVISION = '$Rev: 577 $';
 
 # }}}
 # {{{ variables
@@ -145,11 +144,11 @@ __END__
 
 =head1 VERSION
 
-version 0.044
+version 0.0577
 Lingua::CES::Num2Word -  number to text convertor for Czech.
 Output text is encoded in utf-8.
 
-=head2 $Rev: 440 $
+=head2 $Rev: 577 $
 
 ISO 639-3 namespace.
 
@@ -162,6 +161,8 @@ ISO 639-3 namespace.
  print $text || "sorry, can't convert this number into czech language.";
 
 =head1 DESCRIPTION
+
+Number 2 word conversion in CES.
 
 Lingua::CES::Num2Word is module for conversion numbers into their representation
 in Czech. It converts whole numbers from 0 up to 999 999 999.

@@ -1,5 +1,5 @@
 ---
-abstract: 'Lingua::CES::Num2Word is module for conversion numbers into their representation in Czech. It converts whole numbers from 0 up to 999 999 999.'
+abstract: 'Number 2 word conversion in CES.'
 author:
   - 'PetaMem s.r.o. <info@petamem.com>'
 build_requires:
@@ -18,4 +18,4 @@ requires:
   strict: 0
   utf8: 0
   warnings: 0
-version: 0.044
+version: 0.0577
