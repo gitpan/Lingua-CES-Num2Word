@@ -5,6 +5,8 @@ package Lingua::CES::Num2Word;
 
 # {{{ use block
 
+use 5.10.1;
+
 use strict;
 use warnings;
 use utf8;
@@ -14,8 +16,8 @@ use Perl6::Export::Attrs;
 # }}}
 # {{{ BEGIN
 
-our $VERSION  = 0.0577;
-our $REVISION = '$Rev: 577 $';
+our $VERSION  = 0.0682;
+our $REVISION = '$Rev: 682 $';
 
 # }}}
 # {{{ variables
@@ -144,11 +146,11 @@ __END__
 
 =head1 VERSION
 
-version 0.0577
+version 0.0682
 Lingua::CES::Num2Word -  number to text convertor for Czech.
 Output text is encoded in utf-8.
 
-=head2 $Rev: 577 $
+=head2 $Rev: 682 $
 
 ISO 639-3 namespace.
 
