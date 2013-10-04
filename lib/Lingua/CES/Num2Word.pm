@@ -11,13 +11,14 @@ use strict;
 use warnings;
 use utf8;
 
+use Carp;
 use Perl6::Export::Attrs;
 
 # }}}
 # {{{ BEGIN
 
-our $VERSION  = 0.0682;
-our $REVISION = '$Rev: 682 $';
+our $VERSION  = 0.1101;
+our $REVISION = '$Rev: 1061 $';
 
 # }}}
 # {{{ variables
@@ -45,10 +46,13 @@ my %token3 = (  100, 'sto', 200, 'dvě stě',   300, 'tři sta',
 
 sub num2ces_cardinal :Export {
     my $result = '';
-    my $number = defined $_[0] ? shift : return $result;
+    my $number = shift;
 
-    # numbers less than 0 are not supported yet
-    return $result if $number < 0;
+    croak 'You should specify a number from interval [0, 999_999_999]'
+        if    !defined $number
+           || $number !~ m{\A\d+\z}xms
+           || $number < 0
+           || $number > 999_999_999;
 
     my $reminder = 0;
 
@@ -126,9 +130,6 @@ sub num2ces_cardinal :Export {
 
         $result = $tmp2.$tmp1;
     }
-    else {
-        # >= 1 000 000 000 unsupported yet (miliard)
-    }
 
     return $result;
 }
@@ -141,28 +142,15 @@ __END__
 
 # {{{ POD HEAD
 
+=pod
+
 =head1 NAME
 
+=head2 Lingua::CES::Num2Word $Rev: 1061 $
 
 =head1 VERSION
 
-version 0.0682
-Lingua::CES::Num2Word -  number to text convertor for Czech.
-Output text is encoded in utf-8.
-
-=head2 $Rev: 682 $
-
-ISO 639-3 namespace.
-
-=head1 SYNOPSIS
-
- use Lingua::CES::Num2Word;
-
- my $text = Lingua::CES::Num2Word::num2ces_cardinal( 123 );
-
- print $text || "sorry, can't convert this number into czech language.";
-
-=head1 DESCRIPTION
+version 0.1101
 
 Number 2 word conversion in CES.
 
@@ -172,7 +160,22 @@ in Czech. It converts whole numbers from 0 up to 999 999 999.
 =cut
 
 # }}}
-# {{{ Functions reference
+# {{{ SYNOPSIS
+
+=pod
+
+=head1 SYNOPSIS
+
+ use Lingua::CES::Num2Word;
+
+ my $text = Lingua::CES::Num2Word::num2ces_cardinal( 123 );
+
+ print $text || "sorry, can't convert this number into czech language.";
+
+=cut
+
+# }}}
+# {{{ Functions Reference
 
 =pod
 
@@ -180,13 +183,30 @@ in Czech. It converts whole numbers from 0 up to 999 999 999.
 
 =over 2
 
-=item num2ces_cardinal (positional)
+=item B<num2ces_cardinal> (positional)
 
   1   number  number to convert
-  =>  string  lexical representation of the input
-      undef   if input number is not known
+  =>  str    lexical representation of the input
+      undef  if input number is not known
 
 Convert number to text representation.
+
+
+=back
+
+=cut
+
+# }}}
+# {{{ EXPORTED FUNCTIONS
+
+=pod
+
+=head1 EXPORT_OK
+
+=over 2
+
+=item num2ces_cardinal
+
 
 =back
 
@@ -197,28 +217,15 @@ Convert number to text representation.
 
 =pod
 
-=head1 EXPORT_OK
-
-num2ces_cardinal
-
-=head1 KNOWN BUGS
-
-None.
-
 =head1 AUTHOR
 
  coding, maintenance, refactoring, extensions, specifications:
-   Richard C. Jelinek <info@petamem.com>
- initial coding after specification by R. Jelinek:
+
    Roman Vasicek <info@petamem.com>
 
 =head1 COPYRIGHT
 
 Copyright (C) PetaMem, s.r.o. 2004-present
-
-=head2 LICENSE
-
-Artistic license or BSD license.
 
 =cut
 

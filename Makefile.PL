@@ -12,6 +12,7 @@ my %WriteMakefileArgs = (
   "ABSTRACT" => "Number 2 word conversion in CES.",
   "AUTHOR" => "PetaMem s.r.o. <info\@petamem.com>",
   "BUILD_REQUIRES" => {
+    "Test::Exception" => 0,
     "Test::More" => 0
   },
   "CONFIGURE_REQUIRES" => {
@@ -22,12 +23,13 @@ my %WriteMakefileArgs = (
   "LICENSE" => "open_source",
   "NAME" => "Lingua::CES::Num2Word",
   "PREREQ_PM" => {
+    "Carp" => 0,
     "Perl6::Export::Attrs" => 0,
     "strict" => 0,
     "utf8" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.0682",
+  "VERSION" => "0.1101",
   "test" => {
     "TESTS" => "t/*.t"
   }

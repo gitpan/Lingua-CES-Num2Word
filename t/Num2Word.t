@@ -10,6 +10,7 @@ use strict;
 use warnings;
 use utf8;
 
+use Test::Exception;
 use Test::More;
 
 # }}}
@@ -84,9 +85,7 @@ $exp = 'devět set devadesát devět milionů devět set devadesát devět tisí
 is($got, $exp, '999 999 999 in Czech');
 $tests++;
 
-$got = num2ces_cardinal(10_000_000_000_000);
-$exp = q{};
-is($got, $exp, 'too big');
+dies_ok(sub { num2ces_cardinal(10_000_000_000_000); }, 'too big');
 $tests++;
 
 # }}}
