@@ -17,8 +17,8 @@ use Perl6::Export::Attrs;
 # }}}
 # {{{ BEGIN
 
-our $VERSION  = 0.1101;
-our $REVISION = '$Rev: 1061 $';
+our $VERSION  = 0.1106;
+our $REVISION = '$Rev: 1106 $';
 
 # }}}
 # {{{ variables
@@ -146,11 +146,11 @@ __END__
 
 =head1 NAME
 
-=head2 Lingua::CES::Num2Word $Rev: 1061 $
+=head2 Lingua::CES::Num2Word 
 
 =head1 VERSION
 
-version 0.1101
+version 0.1106
 
 Number 2 word conversion in CES.
 
@@ -190,6 +190,8 @@ in Czech. It converts whole numbers from 0 up to 999 999 999.
       undef  if input number is not known
 
 Convert number to text representation.
+Only numbers from interval [0, 999_999_999] will
+be converted.
 
 
 =back
